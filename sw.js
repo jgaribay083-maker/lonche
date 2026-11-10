@@ -1,5 +1,5 @@
 // Lonche: funciona sin internet. Red primero; si no hay, usa lo guardado.
-const CACHE = 'lonche-v3';
+const CACHE = 'lonche-v4';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {

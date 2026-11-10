@@ -246,6 +246,47 @@ nav button.on{color:var(--acc)}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);color:var(--ink);padding:11px 20px;border-radius:99px;font-weight:500;font-size:15px;opacity:0;transition:.3s var(--ease);pointer-events:none;z-index:40;max-width:88vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 8px 30px rgba(0,0,0,.25),0 0 0 .5px var(--line)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 footer{color:var(--faint);font-size:12.5px;text-align:center;margin:28px 0 8px}
+/* ===== CRISTAL ===== */
+:root{--g1:rgba(255,255,255,.16);--g2:rgba(255,255,255,.05);--gh:rgba(255,255,255,.38);--gb:rgba(255,255,255,.14);--gs:0 6px 18px rgba(0,0,0,.35);--ch:rgba(255,255,255,.07);--glow:.22}
+@media (prefers-color-scheme:light){:root{--g1:rgba(255,255,255,.95);--g2:rgba(255,255,255,.6);--gh:#fff;--gb:rgba(0,0,0,.06);--gs:0 6px 18px rgba(60,60,80,.12);--ch:rgba(255,255,255,.9);--glow:.16}}
+body{background:transparent;padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--glow);
+ background:radial-gradient(60% 34% at 12% 0%,var(--acc),transparent 70%),radial-gradient(50% 30% at 100% 8%,var(--p),transparent 70%),radial-gradient(60% 30% at 50% 100%,var(--w),transparent 70%)}
+.card,.mc,.stat,.opt{box-shadow:inset 0 1px 0 var(--ch)}
+.opt.on{box-shadow:inset 0 1px 0 var(--ch),0 0 0 2px var(--acc)}
+
+/* cristal neutro */
+.btn.ghost,.btn.line,.rb,.chip,.pill:not(.cnt),.racha,.qty .rb,.seg button.on,.tabs button.on{
+ background:linear-gradient(180deg,var(--g1),var(--g2));
+ -webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);
+ box-shadow:inset 0 1px 0 var(--gh),inset 0 0 0 .5px var(--gb),var(--gs)}
+.seg button.on,.tabs button.on{box-shadow:inset 0 1px 0 var(--gh),inset 0 0 0 .5px var(--gb),0 2px 8px rgba(0,0,0,.18)}
+
+/* cristal con color */
+.btn:not(.ghost):not(.line):not(.danger),.rb.acc,.rb.ok,.chip.on,.dchip.on b{--t:var(--acc);
+ background:linear-gradient(180deg,color-mix(in srgb,var(--t) 72%,#fff) 0%,var(--t) 48%,color-mix(in srgb,var(--t) 84%,#000) 100%);color:#fff;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -1px 0 rgba(0,0,0,.18),inset 0 0 0 .5px rgba(255,255,255,.28),0 8px 22px -6px color-mix(in srgb,var(--t) 70%,transparent);
+ text-shadow:0 1px 1px rgba(0,0,0,.18)}
+.rb.ok{--t:var(--c)}
+
+/* brillo de arriba + reflejo que pasa */
+.btn,.rb,.chip,.pill:not(.cnt),.racha{position:relative;overflow:hidden;isolation:isolate}
+.btn:not(.danger)::before,.rb::before,.chip::before{content:"";position:absolute;left:1px;right:1px;top:1px;height:48%;border-radius:inherit;pointer-events:none;
+ background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0))}
+@media (prefers-color-scheme:light){.btn.ghost::before,.btn.line::before,.rb:not(.acc):not(.ok)::before,.chip:not(.on)::before{background:linear-gradient(180deg,#fff,rgba(255,255,255,0))}}
+.btn:not(.ghost):not(.line):not(.danger)::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-60%;width:38%;pointer-events:none;transform:skewX(-22deg);
+ background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:sheen 5s ease-in-out infinite}
+@keyframes sheen{0%,62%{left:-60%}100%{left:135%}}
+.btn:active,.rb:active,.chip:active{transform:scale(.96);filter:brightness(1.12)}
+
+/* barra de abajo flotante */
+nav{left:50%;right:auto;transform:translateX(-50%);width:min(448px,calc(100% - 32px));bottom:calc(12px + env(safe-area-inset-bottom));padding:5px;border:0;border-radius:99px;
+ background:linear-gradient(180deg,var(--g1),var(--g2)),var(--bar);-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);
+ box-shadow:inset 0 1px 0 var(--gh),inset 0 0 0 .5px var(--gb),0 14px 36px rgba(0,0,0,.35)}
+nav button{height:52px;border-radius:99px;transition:color .2s,background .25s}
+nav button.on{background:linear-gradient(180deg,var(--g1),var(--g2));box-shadow:inset 0 1px 0 var(--gh),inset 0 0 0 .5px var(--gb)}
+.toast{bottom:calc(92px + env(safe-area-inset-bottom));box-shadow:inset 0 1px 0 var(--gh),inset 0 0 0 .5px var(--gb),0 10px 30px rgba(0,0,0,.3)}
+.wiz{background:var(--bg) radial-gradient(70% 30% at 15% 0%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
